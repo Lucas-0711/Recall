@@ -508,6 +508,8 @@ if (typeof module !== 'undefined') module.exports = { SQLiteDB, pbParse, parseAp
 const $ = (s, r = document) => r.querySelector(s);
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const sleep = ms => new Promise(r => setTimeout(r, ms));
+/* Shown at the bottom of Settings. Bump on every release so the installed copy can be identified. */
+const APP_VERSION = '2.0.1';
 const DAY = 86400000, MIN = 60000;
 let _lastId = 0;
 const uid = () => { let t = Date.now(); if (t <= _lastId) t = _lastId + 1; _lastId = t; return t; };
@@ -1911,7 +1913,8 @@ function viewSettings() {
     <button class="row danger" data-act="wipe"><span class="grow">Erase All Data</span></button>
   </div>
   <p class="note">${Object.keys(S.cards).length} cards · ${Object.keys(S.notes).length} notes · ${Object.keys(S.decks).length} decks · ${S.revlog.length} reviews logged</p>
-  <p class="note">Shortcuts on a keyboard: Space to flip / answer Good, 1–4 to answer, ⌘Z to undo.</p>`;
+  <p class="note">Shortcuts on a keyboard: Space to flip / answer Good, 1–4 to answer, ⌘Z to undo.</p>
+  <p class="note" style="text-align:center;font-size:11px;color:var(--ter);margin-top:18px">Recall v${APP_VERSION}</p>`;
 }
 
 /* ---------------- global actions ---------------- */
